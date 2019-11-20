@@ -1,0 +1,72 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="AdminMasterPage.master.cs" Inherits="AdminMasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head id="Head1" runat="server">
+    <title></title>
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .style1
+        {
+            width: 100%;
+        }
+        .style2
+        {
+            width: 156px;
+        }
+        .style3
+        {
+            width: 156px;
+            height: 30px;
+        }
+        .style4
+        {
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <form id="Form1" runat="server">
+    <div class="page">
+        <div class="header">
+            <div class="title">
+                <h1>
+                    ROOM RESERVATION SYSTEM</h1>
+            </div>
+            <div class="loginDisplay">
+            </div>
+            <div class="clear hideSkiplink">
+                <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
+                    <Items>
+                        <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home"/>
+                        <asp:MenuItem Text="Room Reservation" Value="Room Reservation">
+                            <asp:MenuItem Text="Room Request" Value="Room Request" 
+                                NavigateUrl="~/AdminRoomRequest.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text=" View Room " Value=" View Room " 
+                                NavigateUrl="~/AdminViewRoom.aspx">
+                            </asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="Notification" Value="Notification">
+                            <asp:MenuItem Text="Add" Value="Add" NavigateUrl="~/AdminAddNotification.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="View" Value="View" 
+                                NavigateUrl="~/AdminViewNotification.aspx"></asp:MenuItem>
+                        </asp:MenuItem>
+                    </Items>
+                </asp:Menu>
+            </div>
+        </div>
+        <div class="main">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="footer">
+        
+    </div>
+    </form>
+</body>
+</html>

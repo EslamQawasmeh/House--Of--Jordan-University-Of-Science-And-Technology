@@ -1,0 +1,535 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddStudent">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="StudentUniID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="StudentFullName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="StudentRegion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="StudentSpecialization" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="StudentPlaceofBirth" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="StudentBirthDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="StudentMobile" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="StudentFatherMobile" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="StudentLevel" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="StudentPassword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddStudentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddStudentResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Login">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="StudentUniID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="StudentPassword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoginResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNotifications">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetNotificationsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNotificationsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBuildingIDs">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetBuildingIDsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBuildingIDsResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetRoomIDs">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BuildingID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRoomIDsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRoomIDsResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRoomCapacity">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RoomID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRoomCapacityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetRoomCapacityResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStudentCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RoomID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStudentCountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetStudentCountResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendRoomReservationRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="StudentUniID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RoomID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ReservationState" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendRoomReservationRequestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendRoomReservationRequestResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStudentRoomRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="StudentUniID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStudentRoomRequestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetStudentRoomRequestResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddMessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="StudentUniID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="StudentFullName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MessageTitle" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MessageBody" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddMessageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddMessageResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAttendance">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="StudentUniID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAttendanceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAttendanceResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddStudentSoapIn">
+    <wsdl:part name="parameters" element="tns:AddStudent" />
+  </wsdl:message>
+  <wsdl:message name="AddStudentSoapOut">
+    <wsdl:part name="parameters" element="tns:AddStudentResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoginSoapIn">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="LoginSoapOut">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNotificationsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNotifications" />
+  </wsdl:message>
+  <wsdl:message name="GetNotificationsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNotificationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBuildingIDsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBuildingIDs" />
+  </wsdl:message>
+  <wsdl:message name="GetBuildingIDsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBuildingIDsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRoomIDsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRoomIDs" />
+  </wsdl:message>
+  <wsdl:message name="GetRoomIDsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRoomIDsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRoomCapacitySoapIn">
+    <wsdl:part name="parameters" element="tns:GetRoomCapacity" />
+  </wsdl:message>
+  <wsdl:message name="GetRoomCapacitySoapOut">
+    <wsdl:part name="parameters" element="tns:GetRoomCapacityResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetStudentCountSoapIn">
+    <wsdl:part name="parameters" element="tns:GetStudentCount" />
+  </wsdl:message>
+  <wsdl:message name="GetStudentCountSoapOut">
+    <wsdl:part name="parameters" element="tns:GetStudentCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendRoomReservationRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:SendRoomReservationRequest" />
+  </wsdl:message>
+  <wsdl:message name="SendRoomReservationRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:SendRoomReservationRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetStudentRoomRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:GetStudentRoomRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetStudentRoomRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:GetStudentRoomRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddMessageSoapIn">
+    <wsdl:part name="parameters" element="tns:AddMessage" />
+  </wsdl:message>
+  <wsdl:message name="AddMessageSoapOut">
+    <wsdl:part name="parameters" element="tns:AddMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAttendanceSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAttendance" />
+  </wsdl:message>
+  <wsdl:message name="GetAttendanceSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAttendanceResponse" />
+  </wsdl:message>
+  <wsdl:portType name="RRSWebServiceSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddStudent">
+      <wsdl:input message="tns:AddStudentSoapIn" />
+      <wsdl:output message="tns:AddStudentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <wsdl:input message="tns:LoginSoapIn" />
+      <wsdl:output message="tns:LoginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNotifications">
+      <wsdl:input message="tns:GetNotificationsSoapIn" />
+      <wsdl:output message="tns:GetNotificationsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBuildingIDs">
+      <wsdl:input message="tns:GetBuildingIDsSoapIn" />
+      <wsdl:output message="tns:GetBuildingIDsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRoomIDs">
+      <wsdl:input message="tns:GetRoomIDsSoapIn" />
+      <wsdl:output message="tns:GetRoomIDsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRoomCapacity">
+      <wsdl:input message="tns:GetRoomCapacitySoapIn" />
+      <wsdl:output message="tns:GetRoomCapacitySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStudentCount">
+      <wsdl:input message="tns:GetStudentCountSoapIn" />
+      <wsdl:output message="tns:GetStudentCountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendRoomReservationRequest">
+      <wsdl:input message="tns:SendRoomReservationRequestSoapIn" />
+      <wsdl:output message="tns:SendRoomReservationRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStudentRoomRequest">
+      <wsdl:input message="tns:GetStudentRoomRequestSoapIn" />
+      <wsdl:output message="tns:GetStudentRoomRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddMessage">
+      <wsdl:input message="tns:AddMessageSoapIn" />
+      <wsdl:output message="tns:AddMessageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAttendance">
+      <wsdl:input message="tns:GetAttendanceSoapIn" />
+      <wsdl:output message="tns:GetAttendanceSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="RRSWebServiceSoap" type="tns:RRSWebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddStudent">
+      <soap:operation soapAction="http://tempuri.org/AddStudent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://tempuri.org/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNotifications">
+      <soap:operation soapAction="http://tempuri.org/GetNotifications" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBuildingIDs">
+      <soap:operation soapAction="http://tempuri.org/GetBuildingIDs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRoomIDs">
+      <soap:operation soapAction="http://tempuri.org/GetRoomIDs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRoomCapacity">
+      <soap:operation soapAction="http://tempuri.org/GetRoomCapacity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStudentCount">
+      <soap:operation soapAction="http://tempuri.org/GetStudentCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendRoomReservationRequest">
+      <soap:operation soapAction="http://tempuri.org/SendRoomReservationRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStudentRoomRequest">
+      <soap:operation soapAction="http://tempuri.org/GetStudentRoomRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddMessage">
+      <soap:operation soapAction="http://tempuri.org/AddMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAttendance">
+      <soap:operation soapAction="http://tempuri.org/GetAttendance" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="RRSWebServiceSoap12" type="tns:RRSWebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddStudent">
+      <soap12:operation soapAction="http://tempuri.org/AddStudent" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap12:operation soapAction="http://tempuri.org/Login" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNotifications">
+      <soap12:operation soapAction="http://tempuri.org/GetNotifications" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBuildingIDs">
+      <soap12:operation soapAction="http://tempuri.org/GetBuildingIDs" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRoomIDs">
+      <soap12:operation soapAction="http://tempuri.org/GetRoomIDs" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRoomCapacity">
+      <soap12:operation soapAction="http://tempuri.org/GetRoomCapacity" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStudentCount">
+      <soap12:operation soapAction="http://tempuri.org/GetStudentCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendRoomReservationRequest">
+      <soap12:operation soapAction="http://tempuri.org/SendRoomReservationRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStudentRoomRequest">
+      <soap12:operation soapAction="http://tempuri.org/GetStudentRoomRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddMessage">
+      <soap12:operation soapAction="http://tempuri.org/AddMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAttendance">
+      <soap12:operation soapAction="http://tempuri.org/GetAttendance" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="RRSWebService">
+    <wsdl:port name="RRSWebServiceSoap" binding="tns:RRSWebServiceSoap">
+      <soap:address location="http://localhost:37150/RRSWebService/RRSWebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="RRSWebServiceSoap12" binding="tns:RRSWebServiceSoap12">
+      <soap12:address location="http://localhost:37150/RRSWebService/RRSWebService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
