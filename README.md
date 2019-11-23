@@ -1,6 +1,5 @@
 # House--Of--Jordan-University-Of-Science-And-Technology
-:)
-In our project there are two parties :
+A project contain two parties :
 First party management housing
 The second party is the student
 
